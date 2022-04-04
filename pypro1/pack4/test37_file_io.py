@@ -74,7 +74,7 @@ try:
     
     with open(file = "hello.dat", mode = "rb") as ff4:
         a, b = pickle.load(ff4)
-        print(a)
+        print(a) #11시 40분
         print(b)
         c = pickle.load(ff4)
         print(c)
