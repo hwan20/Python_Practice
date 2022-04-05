@@ -73,8 +73,9 @@ try:
     print("개체를 파일로 저장")
     
     with open(file = "hello.dat", mode = "rb") as ff4:
-        a, b = pickle.load(ff4)
-        print(a) #11시 40분
+        #print(pickle.load(ff4)) #tuple 형식으로 dict와 list 데이터가 들어가있음
+        a, b = pickle.load(ff4) #tuple 데이터는 dict와 list data로 이루어져있으니 두 개로 읽음
+        print(a) #pickle.load안에 tuple형식으로 들어있는 데이터를 순서대로 빼줌 dict 형태의 데이터가 a에 list형식 데이터가 b에 들어감
         print(b)
         c = pickle.load(ff4)
         print(c)
