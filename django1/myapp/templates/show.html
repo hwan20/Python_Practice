@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/static/css/test.css"/><!-- css다음 js -->
+<script type="text/javascript" src="/static/js/test.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script type="text/javascript">
+//다른 곳에서 $ 사용하고 있으면 jQuery로 사용
+//문서 로딩이 완료되면 call back되는 1회용 함수
+$(document).ready(function(){ //server로부터 text파일에 로딩이 완료되면 자동으로 발생하는 call back 함수 무슨 뜻이야~
+	//alert("jquery ok");
+	
+	$("#myimg").click(function(){
+		//abc();
+		alert("jQuery nice~!")
+	});
+});
+</script>
+</head>
+<body>
+<!-- stlye은 여기에 js는 body안에 style이 있는 것 X -->
+<h1>good 요청에 대한 <span style="font-family:궁서; font-size:50pt; color:red"> 출력 결과</span></h1>
+출력을 위한 파일은 각 app의 templates 폴더에 넣는다
+<br>
+<!-- java에서는 <% > 이렇게 el, jstl을 사용하지만 django에서는 중괄호 두 개를 사용한다 -->
+Django가 지원하는 변수 맵핑 태그 {{mymsg}}
+<br>
+
+<hr>
+<img src="/static/images/qwe.png" id="myimg"/>
+
+<!-- 클라이언트를 통해서 server에서 요청한것 -->
+<a href="http://www.daum.net:80/index.html">다음 사이트의 html문서 읽기</a> 
+</body>
+</html>

@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+ 
+function abc(){
+	history.back();
+}
+
+
