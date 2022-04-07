@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+회원 자료 입력<p/>
+<!-- 
+	http://127.0.0.1:8000/member/member/insertok?name=%EC%B5%9C%EC%9D%BC%ED%99%98
+	이미 member 요청에 있는데 member/insertok 요청이 들어가니 member/member/insertok 가 들어감 앞에
+	member/insertok 앞에 / 를 줘서 경로를 맞춰줌
+	한글이라 name=뒤에 인코딩됨
+ -->
+<!-- 
+	<form action="/member/insertok" method="get">
+ -->
+<!-- 정보를 넣기 위해 insert와 insertok 두 가지를 같이 사용하면 낭비이니 하나의 insert로 하기 -->
+<form action="/member/insert" method="post"> {% csrf_token %} <!-- 넣어줘야 해킹에 안전함 필수 없으면 오류남 -->
+이름 : <input type="text" name="name">
+<input type="submit" value="확인">
+</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
