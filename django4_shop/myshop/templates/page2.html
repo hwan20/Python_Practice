@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function(){
+		document.querySelector("#btnOk").onclick=function(){
+			frm.submit();	/* form의 이름 */
+		}
+	}
+</script>
+</head>
+<body>
+<table>
+	<tr>
+		<td><img src="/static/images/pic2.jpg" style="width:30%"/></td>
+		<td>
+			<pre>
+				[30%OFF]네이비 보아 플리스 베이스볼 점퍼 (BC1941N09R)
+				8%
+				181,300원
+				164,000원
+				145,200원
+				(구매금액)
+				신한카드 즉시할인 5% (50,000원 이상)
+				CJ카드 청구할인 5% 15,350원~
+				4/13(수) 이내 도착예정
+				구매 전 적립금 5,000원 받기
+				카드 무이자 혜택보기(최대 6개월)
+			</pre>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<form action = "cart" name="frm" method="post"> {%csrf_token%}
+				<input type="hidden" name="name" value="네이비 보아 플리스 베이스볼 점퍼">
+				<input type="hidden" name="price" value="164000">
+				<input type="button" id="btnOk" value="장바구니에 물건담기">
+				<input type="button" value="홈으로" onclick="history.back()">
+			</form>
+		</td>
+	</tr>
+</table>
+</body>
+</html>
