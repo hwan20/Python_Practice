@@ -8,12 +8,12 @@ plt.rcParams['axes.unicode_minus'] = False #한글이 안 깨지게 하니 깨�
 x = ["서울", "인천", "수원"] #set은 순서가 없어서 X
 y = [5, 3, 7]
 
-#plt.plot(y)
-#plt.xlim([-1, 3]) #x축의 크기를 정함
-#plt.ylim([0, 10]) #y축의 크기를 정함
-#plt.yticks(list(range(0, 11, 3))) #y의 ticks(표현되는 숫자) 를 정해줌
-#plt.plot(x, y) #x에 서울, 인천, 수원이 들어오는 것은 한글이 들어오는게 아니고 문자에 대한 index값이 들어옴
-#plt.show()
+plt.plot(y)
+plt.xlim([-1, 3]) #x축의 크기를 정함
+plt.ylim([0, 10]) #y축의 크기를 정함
+plt.yticks(list(range(0, 11, 3))) #y의 ticks(표현되는 숫자) 를 정해줌
+plt.plot(x, y) #x에 서울, 인천, 수원이 들어오는 것은 한글이 들어오는게 아니고 문자에 대한 index값이 들어옴
+plt.show()
 
 #data = np.arange(1, 11, 2)
 #print(data)
@@ -74,13 +74,13 @@ y_cos = np.cos(x)
 #plt.grid(True)
 
 #fig = plt.gcf() #그래프를 이미지로 저장
-#plt.show()
+plt.show()
 #fig.savefig('plot1.png')
 
 #이렇게 저장된 이미지는 다른 곳에서 불러서 사용하기에는 이쁘지가 않음
 #그래서 저장된 이미지의 데이터만 가져오고 거기서 이미지를 따로 고쳐줌
 
-from matplotlib.pylab import imread
-img = imread('plot1.png')
-plt.imshow(img)
-plt.show()
+#from matplotlib.pylab import imread
+#img = imread('plot1.png')
+#plt.imshow(img)
+#plt.show()
