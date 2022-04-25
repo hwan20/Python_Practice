@@ -4,7 +4,7 @@ import seaborn as sns
 
 titanic = sns.load_dataset("titanic")
 print(titanic.info())
-"""
+
 #age로 히스토그램을 그림
 sns.displot(titanic['age'])
 plt.show()
@@ -16,7 +16,7 @@ plt.show()
 #sns.countplot(x="class", data=titanic)
 sns.countplot(x="class", data=titanic, hue="who") #hue는 카테고리형 변수
 plt.show()
-"""
+
 
 #pivot_table의 결과를 size를 보여줌
 t_pivot=titanic.pivot_table(index="class", columns="sex", aggfunc="size")

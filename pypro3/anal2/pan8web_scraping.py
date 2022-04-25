@@ -17,7 +17,7 @@ print('-------------')
 #mw-content-text > div.mw-parser-output > p:nth-child(5)   selector 복사해온거
 print(soup.select_one("div.mw-parser-output > p")) #맨 위의 p태그만 가져옴
 #print(soup.select("div.mw-parser-output > p")) #p태그 전체를 가져옴
-print('-------------')
+print('------2-------')
 
 ss = soup.select("div.mw-parser-output > p > b") #p태그 안에 있는 b태그만 출력
 #ss = soup.select("div.mw-parser-output > p") #p태그 안에 있는 p태그만 출력 비어있는 것은 if문을 통해 공백으로 처리 가능

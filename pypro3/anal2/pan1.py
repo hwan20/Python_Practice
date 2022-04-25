@@ -165,7 +165,7 @@ print('-------------')
 
 result1 = pd.Series([ju.split()[0] for ju in fr.juso])
 print(result1)
-print('-------------')
+print('----------------------------------------------')
 print(result1.values)
 print('-------------')
 print(result1.value_counts())
