@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+** 글 내용 **<p/>
+<a href="/guest/insert">자료 추가</a> <!-- /guest/insert와 같음 현재 경로가 /guest 안이니 -->
+<table border="1">
+	<tr>
+		<th>아이디</th><th>제목</th><th>내용</th><th>등록일</th>
+	</tr>
+	{% if gdatas %} <!-- gdatas는 값이 있으면 true고 없으면 false이니 이렇게만 작성하여도 괜찮다 -->
+		{% for g in gdatas%}
+			<tr>
+				<td>{{g.id}}</td>
+				<td>{{g.title}}</td>
+				<td>{{g.content}}</td>
+				<td>{{g.regdate}}</td>
+			</tr>
+		{% endfor %}
+	{% else %}
+	<tr>
+		<td colspan="4">자료가 없어요</td>
+	</tr>
+	{%endif%}
+</table>
+</body>
+</html>
