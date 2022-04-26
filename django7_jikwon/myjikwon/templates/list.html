@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+직원 자료<br>
+{% if datas %}
+	{{datas|safe}} <!-- for문으로 출력하던걸 이런식으로 출력할 수도 있따 -->
+{% endif %}
+
+<hr>
+부서별 연봉의 합(dict type) : <br>
+총무부(10) : {{buser_group.sum.10}} <br>
+영업부(20) : {{buser_group.sum.20}} <br>
+전산부(30) : {{buser_group.sum.30}} <br>
+관리부(40) : {{buser_group.sum.40}} <br>
+<br>
+부서별 연봉의 평균(dict type) : <br>
+총무부(10) : {{buser_group.avg.10}} <br>
+영업부(20) : {{buser_group.avg.20}} <br>
+전산부(30) : {{buser_group.avg.30}} <br>
+관리부(40) : {{buser_group.avg.40}} <br>
+<hr>
+부서별 연봉의 합/평균 (DataFrame) : 
+{{buser_group2|safe}} <br>
+<img src="/static/images/buser.png"/>
+</body>
+</html>
