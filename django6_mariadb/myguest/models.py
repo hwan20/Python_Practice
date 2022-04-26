@@ -11,5 +11,5 @@ class Guest(models.Model):
     class Meta:
         #ordering=('title',)
         #ordering=('-title',)
-        ordering=('id',)
+        ordering=('id',) #models안에서 정렬하는 방법을 추천
         

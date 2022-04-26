@@ -3,6 +3,6 @@ from myguest import views
 
 urlpatterns = [
     path('', views.ListFunc),
-    path('Insert', views.InsertFunc),
-    
+    path('insert', views.InsertFunc),
+    path('insertok', views.InsertOkFunc),
 ]
