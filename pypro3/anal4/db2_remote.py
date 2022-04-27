@@ -6,7 +6,6 @@ import pickle
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import csv
 
 plt.rc("font", family='malgun gothic')
 
