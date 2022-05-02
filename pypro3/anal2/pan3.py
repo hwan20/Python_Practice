@@ -4,7 +4,7 @@ import numpy as np
 
 df = DataFrame([[1.4, np.nan], [7, 4.5], [np.NaN, np.NAN], [0.5, -1]]) #1열, 2열 순으로 입력한 값을 출력
 df.columns = ['one', 'two']
-print(df)
+print(df, type(df))
 print('-------------')
 print(df.drop(1)) #1행을 삭제해서 출력
 print('-------------')
