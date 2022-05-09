@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+function pred(){
+	let send_data={}
+	//input에 입력된 데이터 값을 아이디 year을 이용해서 가져옴
+	let year = document.getElementById("year").value 
+	//가져온 데이터를 alert창을 이용해서 출력시킴
+	send_data['year'] = year //year:year 로 넘어감
+	//alert(send_data) //object 타입이라것을 출력시킴
+	
+	$(".predictPay").empty();
+	$(".payList").empty();
+	
+	//jquary나 java의 ajax로 가능
+	//post방식으로 json형태의 send_data가 넘어감
+	$.ajax({ 
+		url:"predict",
+		type:"post",
+		data:send_data,
+		dataType:"json",
+		success:function(data){ //data에 new_pred가 담김
+			//alert(data)
+			$(".predictPay").append(`근무년수 <b>${year}</b>에 대한 예상 연봉액 : ${data.new_pred}`) //
+			$(".payList").append(data.pay_jik);
+		},
+		error:function(){
+			alert('에러')
+		}
+	});
+	
+}
+</script>
+</head>
+<body>
+<h3>근무년수에 대한 예상 연봉 출력</h3>
+<pr>
+
+근무년수 입력 : <input tpye="text" id="year"/> 년&nbsp;&nbsp; <!-- &nbsp;는 공백을 의미하는  -->
+<button onclick="pred()">연봉 확인</button>
+<br><br>
+
+<div class="predictPay"></div>
+<br>
+
+<h3>직급별 연봉평균</h3>
+<div class="payList"></div>
+
+</body>
+</html>
