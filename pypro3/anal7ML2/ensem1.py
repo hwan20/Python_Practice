@@ -37,7 +37,7 @@ voting_model = VotingClassifier(estimators=[('LR', logi_regression), ('KNN', knn
                                 voting = 'soft')
 
 #hard와 soft가 있음 Voting모델은 hard가 기본 옵션
-#hard는 soft는 투표해서 정함
+#hard는 다수의 분류기가 예측한 결과값으로 soft는 가장 확률이 높은 값으로
 
 classifiers = [logi_regression, knn, dec_model] 
 
