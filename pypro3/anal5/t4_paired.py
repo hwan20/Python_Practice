@@ -24,7 +24,7 @@ print(np.mean(follow_up)) #71.5
 
 print(stats.ttest_rel(baseline, follow_up)) #전후 관계를 봄
 #Ttest_relResult(statistic=3.6681166519351103, pvalue=0.006326650855933662)
-#해석 : pvalue=0.00632 > 0.05 이므로 귀무가설 기각이다
+#해석 : pvalue=0.00632 < 0.05 이므로 귀무가설 기각이다
 #복부 수술 전 몸무게와 복부 수술 후 몸무게의 평균은 차이가 있다.
 
 
