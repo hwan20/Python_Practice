@@ -6,11 +6,13 @@ url = "http://www.kyochon.com/menu/chicken.asp"
 # 이하 소스 코드와 결과만 제출하시오.
 
 data = req.urlopen(url)
+#print(data.read())
 soup = BeautifulSoup(data,"lxml")
+#tabCont01 > ul > li:nth-child(1) > a > dl > dt
 pName = soup.select("dl.txt > dt")
 pPrice = soup.select("p.money > strong")
 #print(pPrice)
-#print(pName)
+print(pName)
 a=[]
 b=[]
 for name, price in zip(pName, pPrice):
