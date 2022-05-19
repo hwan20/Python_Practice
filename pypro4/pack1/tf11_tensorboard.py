@@ -23,7 +23,7 @@ print(model.summary())
 #텐서보드 설정
 tb = TensorBoard(log_dir = '.\\my', histogram_freq = True, write_graph = True, write_images = True)
 history = model.fit(x_data, y_data, batch_size = 1, epochs = 30, verbose = 2,
-                    callbacks=[tb])
+                    callbacks=[tb]) #callbacks에 tb말고 다른 것을 넣을 수도 있따
 #실행을 한 후에 module이 있는 하위 폴더에 파일이 있는지 확인한다
 #anaconda 프롬프트를 실행한 후
 #cd C:\work\repo\pypro4\pack1
