@@ -13,6 +13,9 @@ def page2Func(request):
 def cartFunc(request):
     name = request.POST["name"] #form태그에서 POST방식으로 name이 넘어옴
     price = request.POST["price"]
+    # name = request.GET["name"] #form태그에서 POST방식으로 name이 넘어옴
+    # price = request.GET["price"]
+    
     print(name, price)
     product = {"name" : name, "price" : price} #넘어온 데이터를 key, value형태로 dict 타입으로 저장한다 객체를 저장하는 java의 List와 비슷
     productList = [] #session에 상품의 정보를 key, value인 장바구니를 list형태로 넣는다

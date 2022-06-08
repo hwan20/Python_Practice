@@ -7,7 +7,7 @@ def mainFunc(request):
     return render(request, "main.html" )
 
 def setOsFunc(request):
-    #print('request GET : ', request.GET) #<QueryDict: {}> 아직 만들지는 않았으나 dict 타입으로 출력됨
+    print('request GET : ', request.GET) #<QueryDict: {}> 아직 만들지는 않았으나 dict 타입으로 출력됨
     
     if "favorite_os" in request.GET: #request.GET 안에 있는 Dict에 favorite_os가 있으면 True
         print('request GET : ', request.GET["favorite_os"]) #selectos에서 클릭한 데이터가 get방식으로 넘어옴
