@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script tpye="text/javascript">
+function func(arg){
+	//삭제는 confirm을 확인한 후 해야하니 js를 달아줌
+	//alert(arg); //alert는 개발자가 내용을 확인 할 때 사용 console.log와 비슷	
+	//console.log(arg)
+	//frm = document.getElementByName("frm"); //이거 아님 연습해야 함
+	let result = confirm("정말 삭제하시겠습니까?"); //confirm 말고 jquery의 다이어리?? 를 사용
+	if(result){
+		//frm.submit();
+		document.getElementById(arg).submit();
+	}else{
+		//return false;
+	}
+}
+</script>
+</head>
+<body>
+** 상품 정보 **<p/>
+<div style="width: 80%; text-align: right;">
+	<a href="/sangpum/insert">상품 추가</a>
+</div>
+
+<table style="width: 80%;">
+	<tr>
+		<th>code</th><th>sang</th><th>su</th><th>dan</th><th>etc</th>
+	</tr>
+	{% if sangpums %}
+	{% for s in sangpums %}
+	<tr>
+		<td>{{s.code}}</td>
+		<td>{{s.sang}}</td>
+		<td>{{s.su}}</td>
+		<td>{{s.dan}}</td>
+  		<td>
+	  		<a href="/sangpum/update?code={{s.code}}">수정</a> /
+	  		<!-- <a href="/sangpum/delete?code={{s.code}}">삭제</a> -->
+	  		<form action="/sangpum/delete" name="frm" id="{{s.code}}" method="get" 
+	  				style="display:inline;"> <!-- a태그는 get방식 밖에 안 되는데 POST 방식도 가능하다 -->
+	  			<input type="hidden" name="code" value="{{s.code}}">
+	  			<a href="javascript:void(0); onclick=func({{s.code}})">삭제</a> <!-- void(0)는 a태그의 기능을 죽인것 -->
+	  		</form>
+  		</td>
+	</tr>
+	{% endfor %}
+	<!-- 페이징 처리 -->
+	<tr>
+		<td colspan="5">
+			{% if sangpums.paginator.num_pages > 1 %} <!-- 현재 페이지가 1을 초과할 경우 -->
+				<div>
+					<!-- 1을 초과했다는건 상품이 5개 이상 있다는 것 -->
+					{% if sangpums.has_previous %} <!-- 이전 페이지가 있으면 true -->
+						<a href="/sangpum/list?page={{sangpums.previous_page_number}}">&laquo;이전</a> <!-- 이전 페이지로 갈 수가 있는 넘버를 줌 -->
+					{% endif %}
+					{% if sangpums.has_next %} <!-- 다음 페이지가 있으면 true -->
+						<a href="/sangpum/list?page={{sangpums.next_page_number}}">다음&raquo;</a> <!-- 다음 페이지로 갈 수가 있는 넘버를 줌 -->
+					{% endif %}
+					&nbsp;&nbsp;
+					(페이지 : {{sangpums.number}} / {{sangpums.paginator.num_pages}}) <!-- 현재 페이지 / 전체 페이지를 보여줌 -->
+					<hr>
+					{% for p in allpage %}
+						{% if p > 0 %} <!-- 페이지의 값이 0보다 클 경우, 게시글이 있을 경우 -->
+							<!-- 현재 페이지는 링크를 걸 필요가 없음 -->
+							{% if p == sangpums.number %} <!-- 현재 페이지일 경우 -->
+								[{{p}}] <!-- 현재 페이지를 보여줌 -->
+							{% elif p != sangpums.number %} <!-- 아닐 경우 -->
+								<a href="/sangpum/list?page={{p}}">[{{p}}]</a>
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+				</div>
+			{% endif %}
+		<td>
+	</tr>
+  
+	{% else %}
+	<tr><td colspan="5">자료가 없어요</td></tr>
+	{% endif %}
+</table>
+</body>
+</html>
