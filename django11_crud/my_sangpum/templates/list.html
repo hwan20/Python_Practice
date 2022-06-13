@@ -39,7 +39,7 @@ function func(arg){
   	<td>
   		<a href="/sangpum/update?code={{s.code}}">수정</a> /
   		<!-- <a href="/sangpum/delete?code={{s.code}}">삭제</a> -->
-  		<form action="/sangpum/delete" name="frm" id="{{s.code}}" method="get" 
+  		<form action="/sangpum/delete" method="get" 
   				style="display:inline;"> <!-- a태그는 get방식 밖에 안 되는데 POST 방식도 가능하다 -->
   			<input type="hidden" name="code" value="{{s.code}}">
   			<a href="javascript:void(0); onclick=func({{s.code}})">삭제</a> <!-- void(0)는 a태그의 기능을 죽인것 -->
