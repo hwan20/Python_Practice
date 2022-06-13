@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql', 
         'NAME': 'boarddb',   
         'USER': 'root',        
-        'PASSWORD': '1234', #노트북 db 비밀번호가 1234라서            
+        'PASSWORD': '123', #노트북 db 비밀번호가 1234라서            
         'HOST': '127.0.0.1',               
         'PORT': '3306',                
     }
