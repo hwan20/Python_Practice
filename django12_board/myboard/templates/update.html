@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" 
+	rel="stylesheet" crossorigin="anonymous">
+<script type="text/javascript">
+window.onload = function(){
+	document.getElementById("btnUpdate").onclick = function(){
+		//addEventListner로 해도 됨 이건 동적이라 왔다 갔다 할 수가 있지만 onclick는 정적이라 한 번 하면 끝
+		if(upfrm.name.value==""){
+			alert("작성자를 입력하시오");
+			upfrm.name.focus(); //모바일 일 때는 focus필요 없음
+			return;
+		}
+		
+		if(upfrm.up_passwd.value ==""){
+			alert("비밀번호를 입력하시오");
+			upfrm.up_passwd.focus();
+			return;
+		}
+		//.... 등등 다른 작업 해야함
+		
+		upfrm.submit();
+	}
+}
+</script>
+</head>
+<body style="margin:20px">
+**게시글 수정**
+<form action="/board/updateok" name="upfrm" method="post"> {%csrf_token%}
+	<input type="hidden" name="id" value="{{data_one.id}}"> <!-- 수정하기 위해 id가 맞는지 확인해야 하니 -->
+	<table style="width : 95%" class="table">
+		<tr>
+			<td>작성자 : </td>
+			<td><input type="text" name="name" value="{{data_one.name}}"></td>
+		</tr>
+		<tr>
+			<td>비밀번호 : </td>
+			<td><!-- 수정할 때 비밀번호를 맞춰야 수정이 가능하게 -->
+				<input type="text" name="up_passwd">
+				<span style="coloe:red">{{msg}}</span> <!-- 비밀번호가 맞지 않으면 메세지가 나오게 하기 위해 -->
+			</td> 
+		</tr>
+		<tr>
+			<td>이메일 : </td>
+			<td><input type="email" name="mail" value="{{data_one.mail}}"></td> <!--  -->
+		</tr>
+		<tr>
+			<td>글 제목 : </td>
+			<td><input type="text" name="title" style="width:99%" value="{{data_one.title}}"></td>
+		</tr>
+		<tr>
+			<td>글 내용 : </td>
+			<td>
+				<textarea rows="5" style="width:99%" name="cont">{{data_one.cont}}</textarea>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="text-align: center;">
+				<input type="button" value="수정" id="btnUpdate" class="btn btn-primary">
+				<input type="button" value="이전" class="btn btn-primary" onclick="history.back()">
+			</td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>

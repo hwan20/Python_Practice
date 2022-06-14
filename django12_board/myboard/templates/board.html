@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" 
+	rel="stylesheet" crossorigin="anonymous">
+</head>
+<body style="margin: 20px">
+<div style="width : 95%; text-align : center;">
+	<h3>**게시판 목록**</h3>
+</div>
+<a href="/board/insert">글쓰기</a>
+<table style="width : 95%" class="table">
+	<tr>
+		<th>번호</th><th>제  목</th><th>작성자</th><th>장성일</th><th>조회수</th>
+	</tr>
+	{%if datas%}
+		{%for d in datas%}
+			<tr>
+				<td>{{d.id}}</td> <!-- id는 자동 증가 auto_increment -->
+				<td><a href="/board/content?id={{d.id}}&page={{datas.number}}">{{d.title}}</a></td> <!-- datas.number은 Paginator가 지원 -->
+				<!-- 제목을 눌렀을 때 상세 페이지로 이동하기 위해 제목에 a태그를 달아주는데 -->
+				<!-- 글을 작성하거나 수정, 삭제 했을 때 작업을 완료하고 전에 보던 페이지로 이동하기 위해 page 번호도 달아줌 -->
+				<td>{{d.name}}</td>
+				<td>{{d.bdate.year}}.{{d.bdate.month}}.{{d.bdate.day}}</td> <!-- date는 키워드라 칼럼 명으로 좋지 않음. 그래서 b를 추가 -->
+				<td>{{d.readcnt}}</td>
+			</tr>
+		{%endfor%}
+		<!-- 페이징 처리 같이 -->
+		<tr>
+			<td colspan="5" style="text-align:center;">
+				{% if datas.paginator.num_pages > 1 %} <!-- 현재 페이지가 1을 초과할 경우 -->
+					<div>
+						<!-- 1을 초과했다는건 상품이 5개 이상 있다는 것 -->
+						{% if datas.has_previous %} <!-- 이전 페이지가 있으면 true -->
+							<a href="/board/list?page={{datas.previous_page_number}}">&laquo;이전</a> <!-- 이전 페이지로 갈 수가 있는 넘버를 줌 -->
+						{% endif %}
+						{% if datas.has_next %} <!-- 다음 페이지가 있으면 true -->
+							<a href="/board/list?page={{datas.next_page_number}}">다음&raquo;</a> <!-- 다음 페이지로 갈 수가 있는 넘버를 줌 -->
+						{% endif %}
+						&nbsp;&nbsp;
+						(페이지 : {{datas.number}} / {{datas.paginator.num_pages}}) <!-- 현재 페이지 / 전체 페이지를 보여줌 -->
+					</div>
+				{% endif %}
+			</td>
+		</tr>
+	{%else%}
+		<tr>
+			<td colspan="5">등록된 글이 없어요</td>
+		</tr>
+	{%endif%}
+	<tr>
+		<td colspan="5" style="text-align: center;">
+			<form action="/board/search" method="post">{%csrf_token%}
+				<select name="s_type">
+					<option value="title" selected>글제목</option>
+					<option value="name">작성자</option>
+				</select>
+				<input type="text" name="s_value">
+				<input type="submit" value="검색"><!-- s_type과 s_value가 넘어감 -->
+			</form>
+		</td>
+	</tr>
+</table>
+</body>
+</html>
